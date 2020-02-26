@@ -54,11 +54,23 @@ fit_2 <- stan_glm(data = x, partyid7 ~ race, refresh = 0)
 ```
 
 
+```{r model_3, cache=TRUE}
+fit_3 <- stan_glm(data = x, partyid7 ~ real_ideo, refresh = 0)
+```
+
+```{r show_the_models}
+fit_1
+fit_2
+fit_3
+```
+
+
 ```{r}
-final <- x %>% 
-  select(partyid7, gender) %>% 
+x %>% 
+  select(partyid7, gender, race, real_ideo) %>% 
   mutate(pred_gender = predict(fit_1, x)) %>% 
   mutate(pred_race = predict(fit_2, x)) %>% 
+  mutate(pred_idea = predict(fit_3, x)) %>% 
   slice(8000:8010) # Good rows
 
 ```
