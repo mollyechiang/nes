@@ -43,24 +43,23 @@ x <- nes %>%
 # categorical variable with 7 levels. Recall that 1 means Strong Democrat, 2
 # means Democrat and so on, finishing with 7 for Strong Republican.
 
-
-# What about the relationship between race and party ID?
-
 fit_1 <- stan_glm(data = x, partyid7 ~ gender, refresh = 0)
 ```
 
-```{r}
+```{r model_2, cache=TRUE}
+# What about the relationship between race and party ID? Need to have created a
+# factor variable, or at least a character variable.
 
+fit_2 <- stan_glm(data = x, partyid7 ~ race, refresh = 0)
 ```
 
 
 ```{r}
-x %>% 
+final <- x %>% 
   select(partyid7, gender) %>% 
   mutate(pred_gender = predict(fit_1, x)) %>% 
-  
-  slice(1:10)
-
+  mutate(pred_race = predict(fit_2, x)) %>% 
+  slice(8000:8010) # Good rows
 
 ```
 
