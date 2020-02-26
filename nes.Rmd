@@ -6,14 +6,14 @@ output: html_document
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(echo = FALSE)
 library(rstanarm)
 library(tidyverse)
 
 load("nes.rda")
 ```
 
-```{r}
+```{r clean_data}
 # This data is a mess. Where is the code book? Is this real NES data or some bs
 # made up sample? This is a really good place to write down some thoughts on
 # this data and where it comes from. Take a look at ROAS, pages 141 -- 142.
@@ -30,10 +30,14 @@ x <- nes %>%
   select(year, partyid7, real_ideo, race_adj, 
          age_discrete, educ1, female, income) %>% 
   drop_na() %>% 
-  mutate(gender = as.factor(ifelse(female == 1, "female", "non-female")))
+  mutate(gender = as.factor(ifelse(female == 1, "female", "non-female"))) %>% 
+  mutate(race = as.factor(case_when(race_adj == 1 ~ "White",
+                                    race_adj == 2 ~ "Black",
+                                    TRUE ~ "Other")))
+  
 ```
 
-```{r}
+```{r model_1, cache=TRUE}
 # What is the relationship, if any, between partyid7 and female? We will treat
 # partyid7 as a continuous variable for this exercise, even though it is a
 # categorical variable with 7 levels. Recall that 1 means Strong Democrat, 2
@@ -42,6 +46,21 @@ x <- nes %>%
 
 # What about the relationship between race and party ID?
 
-stan_glm(data = x, partyid7 ~ gender)
+fit_1 <- stan_glm(data = x, partyid7 ~ gender, refresh = 0)
+```
+
+```{r}
+
+```
+
+
+```{r}
+x %>% 
+  select(partyid7, gender) %>% 
+  mutate(pred_gender = predict(fit_1, x)) %>% 
+  
+  slice(1:10)
+
+
 ```
 

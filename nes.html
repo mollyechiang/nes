@@ -369,143 +369,19 @@ summary {
 </div>
 
 
-<pre class="r"><code>summary(nes)</code></pre>
-<pre><code>##       year          resid           weight1          weight2     
-##  Min.   :1952   Min.   :   1.0   Min.   :0.2662   Min.   :0.000  
-##  1st Qu.:1966   1st Qu.: 511.8   1st Qu.:1.0000   1st Qu.:1.000  
-##  Median :1978   Median :1161.0   Median :1.0000   Median :1.000  
-##  Mean   :1977   Mean   :1362.0   Mean   :1.0620   Mean   :1.044  
-##  3rd Qu.:1990   3rd Qu.:1902.0   3rd Qu.:1.0000   3rd Qu.:1.000  
-##  Max.   :2000   Max.   :6009.0   Max.   :4.0000   Max.   :4.000  
-##                                                                  
-##     weight3           age            gender           race         educ1      
-##  Min.   :0.000   Min.   :17.00   Min.   :1.000   Min.   :1.0   Min.   :1.000  
-##  1st Qu.:1.000   1st Qu.:32.00   1st Qu.:1.000   1st Qu.:1.0   1st Qu.:2.000  
-##  Median :1.000   Median :43.00   Median :2.000   Median :1.0   Median :2.000  
-##  Mean   :1.043   Mean   :45.52   Mean   :1.547   Mean   :1.3   Mean   :2.399  
-##  3rd Qu.:1.000   3rd Qu.:58.00   3rd Qu.:2.000   3rd Qu.:1.0   3rd Qu.:3.000  
-##  Max.   :4.000   Max.   :99.00   Max.   :2.000   Max.   :7.0   Max.   :4.000  
-##                                                                               
-##      urban           region          income          occup1     
-##  Min.   :1.000   Min.   :1.000   Min.   :1.000   Min.   :1.000  
-##  1st Qu.:1.000   1st Qu.:2.000   1st Qu.:2.000   1st Qu.:1.000  
-##  Median :2.000   Median :3.000   Median :3.000   Median :3.000  
-##  Mean   :2.107   Mean   :2.469   Mean   :2.933   Mean   :2.976  
-##  3rd Qu.:3.000   3rd Qu.:3.000   3rd Qu.:4.000   3rd Qu.:4.000  
-##  Max.   :3.000   Max.   :4.000   Max.   :5.000   Max.   :6.000  
-##  NA&#39;s   :527                                     NA&#39;s   :3443   
-##      union          religion         educ2           educ3       martial_status
-##  Min.   :1.000   Min.   :1.000   Min.   :1.000   Min.   :1.000   Min.   :1.00  
-##  1st Qu.:2.000   1st Qu.:1.000   1st Qu.:2.000   1st Qu.:2.000   1st Qu.:1.00  
-##  Median :2.000   Median :1.000   Median :3.000   Median :3.000   Median :1.00  
-##  Mean   :1.771   Mean   :1.529   Mean   :3.563   Mean   :3.607   Mean   :1.83  
-##  3rd Qu.:2.000   3rd Qu.:2.000   3rd Qu.:5.000   3rd Qu.:5.000   3rd Qu.:2.00  
-##  Max.   :2.000   Max.   :4.000   Max.   :6.000   Max.   :7.000   Max.   :7.00  
-##  NA&#39;s   :1377    NA&#39;s   :195                                     NA&#39;s   :329   
-##      occup2        icpsr_cty        fips_cty        partyid7    
-##  Min.   :1.000   Min.   : 1001   Min.   : 1051   Min.   :1.000  
-##  1st Qu.:1.000   1st Qu.:21054   1st Qu.:13051   1st Qu.:2.000  
-##  Median :3.000   Median :37049   Median :27099   Median :3.000  
-##  Mean   :2.895   Mean   :36835   Mean   :28623   Mean   :3.592  
-##  3rd Qu.:3.000   3rd Qu.:49227   3rd Qu.:42047   3rd Qu.:6.000  
-##  Max.   :6.000   Max.   :73037   Max.   :56013   Max.   :7.000  
-##  NA&#39;s   :3082    NA&#39;s   :22776   NA&#39;s   :16502   NA&#39;s   :513    
-##     partyid3       partyid3_b     str_partyid     father_party  
-##  Min.   :1.000   Min.   :1.000   Min.   :1.000   Min.   :1.000  
-##  1st Qu.:1.000   1st Qu.:1.000   1st Qu.:2.000   1st Qu.:1.000  
-##  Median :1.000   Median :1.000   Median :3.000   Median :1.000  
-##  Mean   :1.905   Mean   :1.833   Mean   :2.904   Mean   :1.737  
-##  3rd Qu.:3.000   3rd Qu.:3.000   3rd Qu.:4.000   3rd Qu.:3.000  
-##  Max.   :9.000   Max.   :3.000   Max.   :4.000   Max.   :3.000  
-##  NA&#39;s   :155     NA&#39;s   :155     NA&#39;s   :155     NA&#39;s   :21592  
-##   mother_party       dlikes           rlikes         dem_therm    
-##  Min.   :1.000   Min.   :-5.000   Min.   :-5.000   Min.   : 0.00  
-##  1st Qu.:1.000   1st Qu.:-1.000   1st Qu.:-1.000   1st Qu.:40.00  
-##  Median :1.000   Median : 0.000   Median : 0.000   Median :60.00  
-##  Mean   :1.735   Mean   : 0.207   Mean   : 0.188   Mean   :57.51  
-##  3rd Qu.:3.000   3rd Qu.: 2.000   3rd Qu.: 2.000   3rd Qu.:85.00  
-##  Max.   :3.000   Max.   : 5.000   Max.   : 5.000   Max.   :97.00  
-##  NA&#39;s   :22130   NA&#39;s   :17587    NA&#39;s   :17587    NA&#39;s   :21954  
-##    rep_therm         regis            vote        regisvote        presvote    
-##  Min.   : 0.00   Min.   :1.000   Min.   :1.00   Min.   :1.000   Min.   :1.000  
-##  1st Qu.:40.00   1st Qu.:2.000   1st Qu.:1.00   1st Qu.:2.000   1st Qu.:1.000  
-##  Median :60.00   Median :2.000   Median :2.00   Median :3.000   Median :2.000  
-##  Mean   :60.23   Mean   :1.929   Mean   :1.72   Mean   :2.623   Mean   :1.545  
-##  3rd Qu.:85.00   3rd Qu.:2.000   3rd Qu.:2.00   3rd Qu.:3.000   3rd Qu.:2.000  
-##  Max.   :97.00   Max.   :2.000   Max.   :2.00   Max.   :3.000   Max.   :3.000  
-##  NA&#39;s   :21909   NA&#39;s   :25009   NA&#39;s   :1768   NA&#39;s   :8621    NA&#39;s   :20877  
-##  presvote_2party presvote_intent   ideo_feel         ideo7      
-##  Min.   :1.000   Min.   :1.00    Min.   : 0.00   Min.   :1.00   
-##  1st Qu.:1.000   1st Qu.:1.00    1st Qu.:44.00   1st Qu.:3.00   
-##  Median :2.000   Median :2.00    Median :49.00   Median :4.00   
-##  Mean   :1.516   Mean   :1.63    Mean   :52.17   Mean   :4.29   
-##  3rd Qu.:2.000   3rd Qu.:2.00    3rd Qu.:59.00   3rd Qu.:5.00   
-##  Max.   :2.000   Max.   :3.00    Max.   :97.00   Max.   :7.00   
-##  NA&#39;s   :21151   NA&#39;s   :17530   NA&#39;s   :12283   NA&#39;s   :16003  
-##       ideo             cd             state         inter_pre    
-##  Min.   :1.000   Min.   : 1.000   Min.   : 1.00   Min.   : 0.0   
-##  1st Qu.:1.000   1st Qu.: 3.000   1st Qu.:22.00   1st Qu.:18.0   
-##  Median :3.000   Median : 6.000   Median :40.00   Median :29.5   
-##  Mean   :3.399   Mean   : 9.071   Mean   :37.16   Mean   :30.5   
-##  3rd Qu.:5.000   3rd Qu.:12.000   3rd Qu.:51.00   3rd Qu.:43.0   
-##  Max.   :5.000   Max.   :52.000   Max.   :82.00   Max.   :67.0   
-##  NA&#39;s   :22604   NA&#39;s   :2979                     NA&#39;s   :16544  
-##    inter_post        black            female          age_sq    
-##  Min.   : 0.00   Min.   :0.0000   Min.   :0.000   Min.   : 289  
-##  1st Qu.: 9.00   1st Qu.:0.0000   1st Qu.:0.000   1st Qu.:1024  
-##  Median :18.00   Median :0.0000   Median :1.000   Median :1849  
-##  Mean   :20.66   Mean   :0.1048   Mean   :0.547   Mean   :2352  
-##  3rd Qu.:29.00   3rd Qu.:0.0000   3rd Qu.:1.000   3rd Qu.:3364  
-##  Max.   :98.00   Max.   :1.0000   Max.   :1.000   Max.   :9801  
-##  NA&#39;s   :4316                                                   
-##   rep_presvote   rep_pres_intent     south          real_ideo    
-##  Min.   :0.000   Min.   :0.000   Min.   :0.0000   Min.   :1.000  
-##  1st Qu.:0.000   1st Qu.:0.000   1st Qu.:0.0000   1st Qu.:4.000  
-##  Median :1.000   Median :1.000   Median :0.0000   Median :4.000  
-##  Mean   :0.516   Mean   :0.506   Mean   :0.2512   Mean   :4.254  
-##  3rd Qu.:1.000   3rd Qu.:1.000   3rd Qu.:1.0000   3rd Qu.:5.000  
-##  Max.   :1.000   Max.   :1.000   Max.   :1.0000   Max.   :7.000  
-##  NA&#39;s   :21151   NA&#39;s   :18977                    NA&#39;s   :18230  
-##    presapprov       perfin1         perfin2          perfin     
-##  Min.   :1.000   Min.   :1.000   Min.   :1.000   Min.   :1.000  
-##  1st Qu.:1.000   1st Qu.:1.000   1st Qu.:1.000   1st Qu.:1.000  
-##  Median :1.000   Median :2.000   Median :2.000   Median :2.000  
-##  Mean   :1.392   Mean   :1.916   Mean   :1.804   Mean   :1.898  
-##  3rd Qu.:2.000   3rd Qu.:3.000   3rd Qu.:2.000   3rd Qu.:3.000  
-##  Max.   :2.000   Max.   :3.000   Max.   :3.000   Max.   :3.000  
-##  NA&#39;s   :13983   NA&#39;s   :8887    NA&#39;s   :29876   NA&#39;s   :3855   
-##     presadm            age_10        age_sq_10        newfathe     
-##  Min.   :-1.0000   Min.   :1.700   Min.   : 2.89   Min.   :-1.000  
-##  1st Qu.:-1.0000   1st Qu.:3.200   1st Qu.:10.24   1st Qu.:-1.000  
-##  Median : 1.0000   Median :4.300   Median :18.49   Median :-1.000  
-##  Mean   : 0.1664   Mean   :4.552   Mean   :23.52   Mean   :-0.263  
-##  3rd Qu.: 1.0000   3rd Qu.:5.800   3rd Qu.:33.64   3rd Qu.: 1.000  
-##  Max.   : 1.0000   Max.   :9.900   Max.   :98.01   Max.   : 1.000  
-##                                                    NA&#39;s   :21592   
-##     newmoth        parent_party        white           year_new    
-##  Min.   :-1.000   Min.   :-2.000   Min.   :0.0000   Min.   : 1.00  
-##  1st Qu.:-1.000   1st Qu.:-2.000   1st Qu.:1.0000   1st Qu.: 7.00  
-##  Median :-1.000   Median :-2.000   Median :1.0000   Median :13.00  
-##  Mean   :-0.265   Mean   :-0.536   Mean   :0.8404   Mean   :12.78  
-##  3rd Qu.: 1.000   3rd Qu.: 2.000   3rd Qu.:1.0000   3rd Qu.:19.00  
-##  Max.   : 1.000   Max.   : 2.000   Max.   :1.0000   Max.   :24.00  
-##  NA&#39;s   :22130    NA&#39;s   :22991                                    
-##    income_new         age_new            vote.1       age_discrete  
-##  Min.   :-2.0000   Min.   :-2.8525   Min.   :0.000   Min.   :1.000  
-##  1st Qu.:-1.0000   1st Qu.:-1.3525   1st Qu.:0.000   1st Qu.:2.000  
-##  Median : 0.0000   Median :-0.2525   Median :1.000   Median :2.000  
-##  Mean   :-0.0668   Mean   : 0.0000   Mean   :0.506   Mean   :2.434  
-##  3rd Qu.: 1.0000   3rd Qu.: 1.2475   3rd Qu.:1.000   3rd Qu.:3.000  
-##  Max.   : 2.0000   Max.   : 5.3475   Max.   :1.000   Max.   :4.000  
-##                                      NA&#39;s   :18977                  
-##     race_adj         dvote           rvote      
-##  Min.   :1.000   Min.   :0.000   Min.   :0.000  
-##  1st Qu.:1.000   1st Qu.:0.000   1st Qu.:0.000  
-##  Median :1.000   Median :0.000   Median :1.000  
-##  Mean   :1.132   Mean   :0.474   Mean   :0.506  
-##  3rd Qu.:1.000   3rd Qu.:1.000   3rd Qu.:1.000  
-##  Max.   :2.000   Max.   :1.000   Max.   :1.000  
-##                  NA&#39;s   :20877   NA&#39;s   :20877</code></pre>
+<pre><code>## # A tibble: 10 x 3
+##    partyid7 gender      pred
+##       &lt;int&gt; &lt;fct&gt;      &lt;dbl&gt;
+##  1        6 non-female  3.89
+##  2        6 female      3.70
+##  3        7 non-female  3.89
+##  4        2 non-female  3.89
+##  5        6 female      3.70
+##  6        2 female      3.70
+##  7        7 female      3.70
+##  8        5 non-female  3.89
+##  9        7 female      3.70
+## 10        3 non-female  3.89</code></pre>
 
 
 
