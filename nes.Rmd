@@ -1,0 +1,47 @@
+---
+title: "NES"
+author: "David Kane"
+date: "2/26/2020"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(rstanarm)
+library(tidyverse)
+
+load("nes.rda")
+```
+
+```{r}
+# This data is a mess. Where is the code book? Is this real NES data or some bs
+# made up sample? This is a really good place to write down some thoughts on
+# this data and where it comes from. Take a look at ROAS, pages 141 -- 142.
+
+# We are trying to explain partyid7, which is the party identification of each
+# respondent. Can we treat this as continuous? I think that lower numbers mean
+# more Democratic.
+
+# real_ideo is missing a lot. Should we just get rid of those rows? Depends on
+# the time period we care about . . .
+
+x <- nes %>% 
+  as_tibble() %>% 
+  select(year, partyid7, real_ideo, race_adj, 
+         age_discrete, educ1, female, income) %>% 
+  drop_na() %>% 
+  mutate(gender = as.factor(ifelse(female == 1, "female", "non-female")))
+```
+
+```{r}
+# What is the relationship, if any, between partyid7 and female? We will treat
+# partyid7 as a continuous variable for this exercise, even though it is a
+# categorical variable with 7 levels. Recall that 1 means Strong Democrat, 2
+# means Democrat and so on, finishing with 7 for Strong Republican.
+
+
+# What about the relationship between race and party ID?
+
+stan_glm(data = x, partyid7 ~ gender)
+```
+
