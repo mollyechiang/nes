@@ -2,12 +2,15 @@
 title: "NES"
 author: "David Kane"
 date: "2/26/2020"
-output: html_document
+output:
+  pdf_document: default
+  html_document: default
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
 library(rstanarm)
+library(report)
 library(tidyverse)
 
 load("nes.rda")
@@ -63,6 +66,12 @@ fit_1
 fit_2
 fit_3
 ```
+
+```{r nice_print, comment=NA, fig.cap="This is an example of how to use `print()` to create a nice looking display in an R Markdown document of the results of a fitted Bayesian model. Given a stanreg object named `fit_3`, it is created by calling `print(fit_3, detail = FALSE, digits = 2)`."}
+print(fit_3, detail = FALSE, digits = 2)
+plot.new()
+```
+
 
 
 ```{r}
