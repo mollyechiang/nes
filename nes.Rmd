@@ -68,9 +68,16 @@ Here is a nicely printed summary of my model results, showing the relationship b
 print(fit_3, detail = FALSE, digits = 2)
 ```
 
-It isn't the best thing I could imagine. I really want to figure out a way to add a caption. But it will do for now.
+It isn't the best thing I could imagine. I really want to figure out a way to add a caption. But it will do for now. 
+
+Instead of just printing the simple object, we could print its summary.
 
 
+```{r show_the_model_summary, comment=NA}
+print(summary(fit_3), detail = FALSE, digits = 2)
+```
+
+But that adds a bunch of junk, including run-off-the-page text. Maybe there are options in something like `print.stanmvreg()` which might be helpful.
 
 ```{r left_over, include=FALSE}
 x %>% 
