@@ -1,7 +1,7 @@
 ---
 title: "NES"
-author: "David Kane"
-date: "2/26/2020"
+author: "Molly Chiang"
+date: "3/3/2020"
 output:
   html_document: default
 ---
@@ -80,12 +80,17 @@ print(summary(fit_3), detail = FALSE, digits = 2)
 But that adds a bunch of junk, including run-off-the-page text. Maybe there are options in something like `print.stanmvreg()` which might be helpful. Has no one bothered to ask on RStudio Community?
 
 ```{r left_over, include=FALSE}
-x %>% 
+
+# partyid is what we are trying to explain
+
+pred <- x %>% 
   select(partyid7, gender, race, real_ideo) %>% 
   mutate(pred_gender = predict(fit_1, x)) %>% 
   mutate(pred_race = predict(fit_2, x)) %>% 
   mutate(pred_idea = predict(fit_3, x)) %>% 
-  slice(8000:8010) # Interesting rows.
+  # slice(8000:8010) %>%
+  # Interesting rows.
+  mutate(id = rep(1:nrow(x)))
 
 # How similar/different are these predictions?
 
@@ -97,6 +102,49 @@ x %>%
 
 
 ```
+
+```{r graphic realting pred_gender and gender}
+
+ggplot(pred, aes(x = pred_gender, y = partyid7, color = gender)) +
+  geom_jitter(width = .03, height = .3, alpha = .07)
+
+ggplot(pred, aes(x = pred_gender, y = partyid7, group = pred_gender, color = gender)) +
+  geom_boxplot()
+
+ggplot(pred, aes(x = id)) +
+  geom_point(aes(y = pred_gender, color = "BLUE")) +
+  geom_point(aes(y = partyid7, color = "RED")) +
+  labs(x = "Person",
+       y = "Party ID Value",
+       colour = "Value") +
+  scale_color_discrete(labels = c("Prediction", "Actual"))
+
+```
+
+```{r model with many preditors}
+
+big_fit <- stan_glm(data = x, partyid7 ~ gender + race + real_ideo, refresh = 0)
+
+print(big_fit)
+
+# the intercept tells us the predicted partyid7 value for a black female voter 
+# with a real_ideo of 0 (when everything is 0)
+
+# changing the scale of real_ideo from 1-7 to 0-6 will just shift the line,
+# not change any of the slopes
+# in addition, the intercept will have a real-world interpretation
+
+# THINGS TO THINK ABOUT WHEN MAKING A MODEL (pg 145)
+# 1. Validity - data you are analyzing matches the question you are asking - remember that any model is really never a perfect representation of the world - but can always answer questions according to specific assumptions 
+# 2. Representativeness - how representative is our sample of the general population - more about where the data was collected from - did we miss demographics in collecting our data?
+# 3. Additivty and Linearity
+
+```
+
+Posterior Predictive Checks
+- fake data simulation - assume your model is correct, and create new data based on that model 
+    - and usually introduce some uncertainty
+
 
 
 ```{r}

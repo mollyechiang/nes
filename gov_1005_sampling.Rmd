@@ -1,0 +1,51 @@
+---
+title: "Gov 1005 Sampling"
+author: "Molly Chiang"
+date: "3/4/2020"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+library(googlesheets4)
+library(moderndive)
+library(infer)
+library(tidyverse)
+
+sheets_deauth()
+
+```
+
+```{r real data}
+
+raw <- read_sheet("14HmwN2cEVAJHupuehCuLdwG9BXtR3COrxDgaaylLhkA")
+
+raw %>%
+  mutate(prop_red = Red / 25) %>%
+  ggplot(aes(x = prop_red)) +
+  geom_histogram()
+  
+```
+
+
+```{r fake data}
+
+# in our head we have a model of where the data came from
+# and then we have the data
+# and does the data fit with the model?
+# use posterior predictive checks!
+
+urn <- tibble(id = 1:10000,
+              color = c(rep("White", 8000), rep("Red", 2000)))
+
+urn %>%
+  rep_sample_n(size = 25, reps = 51) %>%
+  group_by(replicate) %>%
+  summarize(red = sum(color == "Red")) %>%
+  mutate(prop_red = red / 25) %>%
+  ggplot(aes(x = prop_red)) +
+  geom_histogram()
+
+```
+
