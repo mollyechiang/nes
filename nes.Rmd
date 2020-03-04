@@ -3,7 +3,7 @@ title: "NES"
 author: "David Kane"
 date: "2/26/2020"
 output:
-  pdf_document: default
+  html_document: default
 ---
 
 ```{r setup, include=FALSE}
