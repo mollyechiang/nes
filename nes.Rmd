@@ -77,7 +77,7 @@ Instead of just printing the simple object, we could print its summary.
 print(summary(fit_3), detail = FALSE, digits = 2)
 ```
 
-But that adds a bunch of junk, including run-off-the-page text. Maybe there are options in something like `print.stanmvreg()` which might be helpful.
+But that adds a bunch of junk, including run-off-the-page text. Maybe there are options in something like `print.stanmvreg()` which might be helpful. Has no one bothered to ask on RStudio Community?
 
 ```{r left_over, include=FALSE}
 x %>% 
@@ -85,7 +85,34 @@ x %>%
   mutate(pred_gender = predict(fit_1, x)) %>% 
   mutate(pred_race = predict(fit_2, x)) %>% 
   mutate(pred_idea = predict(fit_3, x)) %>% 
-  slice(8000:8010) # Good rows
+  slice(8000:8010) # Interesting rows.
+
+# How similar/different are these predictions?
+
+# How do we know if a prediction is good?
+
+# How much do bad predictions differ?
+
+# Think about penalty functions and decision-making.
+
+
+```
+
+
+```{r}
+# Fit a model similar to that in Gelman for the whole period. Interpret the
+# details of the model. And, yes, you will be seeing questions similar to this
+# on the exam!
+
+# Now fit the model for a single year. The coefficient values are different!
+# Which ones are true?
+
+# Let's do as ROAS does and fit the model for each year. Recall all your
+# list-column tricks from Gov 1005.
+
+# Once we have that collection of models. Can we make a plot which looks like at
+# least one of the panes from page 142?
+
 
 ```
 
